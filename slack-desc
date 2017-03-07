@@ -1,0 +1,17 @@
+mysql-shell: MySQL Shell (an interactive interface for MySQL)
+mysql-shell:
+mysql-shell: The MySQL Shell is an interactive Javascript, Python, or SQL
+mysql-shell: interface supporting development and administration for the MySQL
+mysql-shell: Server and is a component of the MySQL Server. You can use the
+mysql-shell: MySQL Shell to perform data queries and updates as well as
+mysql-shell: various administration operations.
+mysql-shell: The MySQL Shell provides:
+mysql-shell:   * Both Interactive and Batch operations
+mysql-shell:   * Javascript, Python, and SQL language modes
+mysql-shell:   * Document and Relational Models
+mysql-shell:   * CRUD Document and Relational APIs via scripting
+mysql-shell:   * Traditional Table, JSON, Tab Separated output results formats
+mysql-shell:   * Stored Sessions
+mysql-shell:   * MySQL Standard and X Protocols
+mysql-shell:
+mysql-shell: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
