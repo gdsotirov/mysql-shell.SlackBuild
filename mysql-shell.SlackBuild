@@ -19,7 +19,7 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: mysql-shell.SlackBuild,v 1.1 2017/03/08 18:27:11 gsotirov Exp $
+# $Id: mysql-shell.SlackBuild,v 1.2 2017/03/08 20:38:52 gsotirov Exp $
 #
 
 . ../../slack-package.conf
@@ -65,7 +65,11 @@ cmake -LAH \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
       -DMYSQL_LIB=/usr/lib${LIBDIRSUFFIX}/libmysqlclient.so \
+      -DMYSQLCLIENT_STATIC_LINKING=FALSE \
+      -DHAVE_PYTHON=1 \
       .. || exit 5
+#     -DWITH_TESTS=1 \
+#     -DWITH_GTEST=/usr/src/googletest \ # cannot find CMakeCache.txt
 
 # Build and install
 make VERBOSE=1 -j4 || exit 8
@@ -78,6 +82,8 @@ bin_perms $PKG
 # Move docs in correct location
 ( cd $PKG; mkdir -p usr/doc; mv usr/share/mysqlsh usr/doc/${NAME}-${VERSION}; rmdir usr/share )
 ( cd $PKG/usr/doc/${NAME}-${VERSION}; mv COPYING.txt COPYING )
+DOCFILES="INSTALL"
+( cd $SRC; create_docs $PKG ${NAME}-${VERSION} )
 
 install -m 755 -d $PKG/install
 install -m 644 $CWD/slack-desc     $PKG/install/slack-desc
