@@ -19,14 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: mysql-shell.SlackBuild,v 1.2 2017/03/08 20:38:52 gsotirov Exp $
+# $Id: mysql-shell.SlackBuild,v 1.3 2017/04/15 18:08:38 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=mysql-shell
-VER_REAL='1.0.8-rc'
-VERSION=${VER_REAL//\-/}
+VERSION=1.0.9
 ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
@@ -37,7 +36,7 @@ if [ ! -e $TMP ]; then
   mkdir -p $TMP # location to build the source
 fi
 
-SRC=$TMP/${NAME}-${VER_REAL}-src
+SRC=$TMP/${NAME}-${VERSION}-src
 if [ -e $SRC -a -d $SRC ]; then
   echo "Source directory '$SRC' already exists! Plaese, move it or remove it."
   exit 1
@@ -52,7 +51,7 @@ mkdir -p $PKG
 
 # Extract the source
 cd $TMP
-tar -xvf $CWD/${NAME}-${VER_REAL}-src.tar.gz || exit 3
+tar -xvf $CWD/${NAME}-${VERSION}-src.tar.gz || exit 3
 cd $SRC
 fix_source
 
