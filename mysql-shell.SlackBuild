@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # Slackware build script for MySQL Shell
-# Copyright (C) 2017 Georgi D. Sotirov <gdsotirov@dir.bg>
+# Copyright (C) 2017-2018 Georgi D. Sotirov <gdsotirov@dir.bg>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,13 +19,13 @@
 #
 # Visit SlackPack at http://sotirov-bg.net/slackpack/
 #
-# $Id: mysql-shell.SlackBuild,v 1.3 2017/04/15 18:08:38 gsotirov Exp $
+# $Id: mysql-shell.SlackBuild,v 1.4 2018/02/10 21:00:29 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=mysql-shell
-VERSION=1.0.9
+VERSION=1.0.11
 ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
@@ -63,12 +63,15 @@ cmake -LAH \
       -DCMAKE_C_FLAGS="$SLKCFLAGS" \
       -DCMAKE_INSTALL_PREFIX="/usr" \
       -DCMAKE_VERBOSE_MAKEFILE=TRUE \
-      -DMYSQL_LIB=/usr/lib${LIBDIRSUFFIX}/libmysqlclient.so \
       -DMYSQLCLIENT_STATIC_LINKING=FALSE \
+      -DMYSQL_EXTRA_LIBRARIES=/usr/lib${LIBDIRSUFFIX}/libmysqlclient.a \
       -DHAVE_PYTHON=1 \
+      -DWITH_EDITLINE=bundled \
+      -DWITH_NUMA=1 \
+      -DWITH_PIC=ON \
+      -DWITH_SSL=/usr \
       .. || exit 5
-#     -DWITH_TESTS=1 \
-#     -DWITH_GTEST=/usr/src/googletest \ # cannot find CMakeCache.txt
+#     -DWITH_EDITLINE=system # In -current
 
 # Build and install
 make VERBOSE=1 -j4 || exit 8
