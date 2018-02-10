@@ -13,5 +13,5 @@ mysql-shell:   * CRUD Document and Relational APIs via scripting
 mysql-shell:   * Traditional Table, JSON, Tab Separated output results formats
 mysql-shell:   * Stored Sessions
 mysql-shell:   * MySQL Standard and X Protocols
-mysql-shell:
+mysql-shell: NOTE: Javascript is not avialable, as I'm not able to build V8.
 mysql-shell: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
